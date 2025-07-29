@@ -1,3 +1,4 @@
+// edit-dialog.component.ts
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 export class EditDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
+    // This is correct: 'data' will contain 'title' and 'description'
     @Inject(MAT_DIALOG_DATA) public data: { title: string; description: string }
   ) {}
 

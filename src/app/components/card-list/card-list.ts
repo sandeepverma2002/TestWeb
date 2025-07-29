@@ -1,17 +1,19 @@
+// card-list.component.ts
 import { Component, inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog'; // Ensure this is imported
 import { HttpClient } from '@angular/common/http';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-card-list',
   standalone: true,
   templateUrl: './card-list.html',
   styleUrls: ['./card-list.css'],
-  imports: [CommonModule, MatCardModule, MatButtonModule, EditDialogComponent]
+  imports: [CommonModule, MatCardModule, MatButtonModule]
 })
 export class CardListComponent {
   staticCards = [
@@ -23,8 +25,9 @@ export class CardListComponent {
   backendCards: any[] = [];
 
   private http = inject(HttpClient);
-  private dialog = inject(MatDialog);
-  private apiUrl = 'http://localhost:8000/api/cards/';
+  private dialog = inject(MatDialog); // MatDialog is already correctly injected here
+  private apiUrl = environment.apiUrl;
+
 
   constructor() {
     this.getBackendCards();
@@ -69,17 +72,17 @@ export class CardListComponent {
     });
   }
 
+  // MODIFIED: Correctly update the static card properties
   editStaticCard(card: any) {
-  const dialogRef = this.dialog.open(EditDialogComponent, {
-    data: { title: card.title, description: card.description }
-  });
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: { title: card.title, description: card.description }
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result !== undefined) {
-      card.title = result.title;
-      card.description = result.description;
-    }
-  });
-}
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { // Check if result is not null or undefined (i.e., "Save" was clicked)
+        card.title = result.title;
+        card.description = result.description;
+      }
+    });
+  }
 }
