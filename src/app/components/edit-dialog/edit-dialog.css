@@ -1,26 +1,25 @@
-/* Styling for the overall dialog container (often applied globally or to a specific dialog component) */
-/* Note: Angular Material dialogs inject themselves into the body, so global styles or specific component styles with ::ng-deep (if necessary, though generally avoided) or overlay panel class are usually needed. */
-
-/* This targets the dialog panel itself. You might apply this via panelClass in your MatDialogConfig */
+/* === Dialog Container === */
 .custom-edit-dialog-panel {
-  border-radius: 12px; /* Rounded corners for the dialog */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for elevation */
-  padding: 20px; /* Overall padding inside the dialog */
-  background-color: #ffffff; /* White background */
-  max-width: 500px; /* Max width for desktop */
-  width: 90vw; /* Responsive width */
-  overflow: hidden; /* Ensure content stays within rounded corners */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  max-width: 600px; /* ✅ Wider than before */
+  width: 95vw;      /* More width for responsiveness */
+  max-height: 90vh; /* ✅ Taller so scroll doesn’t appear */
+  padding: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Dialog Title */
-.mat-mdc-dialog-title { /* Use mat-mdc-dialog-title for MDC-based Angular Material */
-  font-size: 2rem; /* Larger, more impactful title */
-  font-weight: 700; /* Bolder */
-  color: #2c3e50; /* Darker text for professionalism */
-  /* margin-bottom: 20px; More space below title */
-  text-align: center; /* Center the title */
+/* === Dialog Title === */
+.mat-mdc-dialog-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  padding-bottom: 15px;
   position: relative;
-  padding-bottom: 10px;
 }
 
 .mat-mdc-dialog-title::after {
@@ -29,113 +28,124 @@
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 60px; /* Underline effect */
-  height: 3px;
-  background-color: #3f51b5; /* Primary color underline */
-  border-radius: 1.5px;
+  width: 70px;
+  height: 4px;
+  background-color: #3f51b5;
+  border-radius: 2px;
 }
 
-/* Dialog Content */
-.mat-mdc-dialog-content { /* Use mat-mdc-dialog-content for MDC-based Angular Material */
-  padding: 10px 0 20px 0; /* Adjust padding for content area */
-  overflow-y: auto; /* Allow scrolling if content overflows */
-  max-height: 60vh; /* Limit height to prevent dialog from getting too tall */
+/* === Dialog Content Area === */
+.mat-mdc-dialog-content {
+  padding: 0;
+  overflow: hidden;     /* ✅ Remove scrollbars */
+  flex: 1;               /* ✅ Take up remaining space */
 }
 
-/* Form Fields */
+/* === Form Wrapper === */
+.dialog-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 12px;
+}
+
+/* === Form Fields === */
 .full-width {
   width: 100%;
-  margin-bottom: 20px; /* Space between form fields */
 }
 
-/* Custom styling for mat-form-field appearance */
-.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
-  border-radius: 8px; /* Slightly more rounded input fields */
+.mat-mdc-form-field {
+  background-color: #fafafa;
+  border-radius: 8px;
 }
 
-.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-outline {
-  color: #ccc; /* Lighter outline color when not focused */
-}
-
-.mat-mdc-form-field.mat-focused .mat-mdc-form-field-outline-thick {
-  color: #3f51b5; /* Primary color when focused */
-}
-
-/* Input and Textarea specific styles */
 input.mat-mdc-input,
 textarea.mat-mdc-input {
-  padding: 12px 16px; /* More padding inside inputs */
-  font-size: 1rem; /* Readable font size */
+  font-size: 1.05rem;
+  padding: 14px 16px;
   color: #333;
 }
 
 textarea.mat-mdc-input {
-  resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Minimum height for textarea */
-  max-height: 250px; /* Maximum height to prevent excessive resizing */
+  resize: vertical;
+  min-height: 100px;
+  max-height: 250px;
+  line-height: 1.5;
 }
 
-/* Dialog Actions */
-.mat-mdc-dialog-actions { /* Use mat-mdc-dialog-actions for MDC-based Angular Material */
+/* === Buttons === */
+.mat-mdc-dialog-actions {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  gap: 12px; /* Space between buttons */
-  padding-top: 15px; /* Padding above buttons */
+  justify-content: flex-end;
+  gap: 15px;
+  padding-top: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
-/* Buttons */
-.mat-mdc-button { /* Base style for Material buttons */
+.mat-mdc-button {
   text-transform: uppercase;
   font-weight: 600;
-  border-radius: 8px; /* Rounded button corners */
-  padding: 8px 20px; /* More padding for a better click target */
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  padding: 10px 24px;
 }
 
 .mat-mdc-button.mat-primary {
-  background-color: #3f51b5; /* Primary color for Save button */
+  background-color: #3f51b5;
   color: #fff;
 }
 
 .mat-mdc-button.mat-primary:hover {
-  background-color: #303f9f; /* Darker primary on hover */
-  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.3);
+  background-color: #303f9f;
 }
 
-.mat-mdc-button.mat-basic { /* For Cancel button (mat-button without color) */
+.mat-mdc-button.mat-basic {
+  background-color: #f0f2f5;
   color: #555;
-  background-color: #f0f2f5; /* Light background for cancel */
+  border: 1px solid #e0e0e0;
 }
 
 .mat-mdc-button.mat-basic:hover {
-  background-color: #e0e2e5; /* Slightly darker on hover */
+  background-color: #e0e2e5;
   color: #333;
 }
 
-
-/* Responsive adjustments for smaller screens */
+/* === Mobile === */
 @media (max-width: 599px) {
   .custom-edit-dialog-panel {
-    padding: 15px;
-    width: 95vw; /* Take more width on very small screens */
+    width: 95vw;
+    max-height: 95vh;
   }
 
-  .mat-mdc-dialog-title {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-
-  .mat-mdc-dialog-content {
-    padding: 5px 0 15px 0;
+  .dialog-form-wrapper {
+    padding: 0 8px;
   }
 
   .mat-mdc-dialog-actions {
-    flex-direction: column; /* Stack buttons vertically on small screens */
-    align-items: stretch; /* Stretch buttons to full width */
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .mat-mdc-button {
-    width: 100%; /* Full width buttons when stacked */
+    width: 100%;
   }
+}
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  padding-top: 20px !important;
+  padding-bottom: 6px !important;
+}
+
+/* Prevent label from overlapping border */
+.mat-mdc-floating-label {
+  top: 16px !important;
+  background: #ffffff;
+  padding: 0 4px;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.dialog-form-wrapper mat-form-field {
+  margin-top: 8px;
 }
