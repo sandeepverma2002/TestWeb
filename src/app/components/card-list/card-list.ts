@@ -25,7 +25,7 @@ export class CardListComponent {
   backendCards: any[] = [];
 
   private http = inject(HttpClient);
-  private dialog = inject(MatDialog); // MatDialog is already correctly injected here
+  private dialog = inject(MatDialog);
   private apiUrl = environment.apiUrl;
 
 
@@ -79,14 +79,13 @@ export class CardListComponent {
   });
 }
 
-  // MODIFIED: Correctly update the static card properties
   editStaticCard(card: any) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: { title: card.title, description: card.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) { // Check if result is not null or undefined (i.e., "Save" was clicked)
+      if (result) {
         card.title = result.title;
         card.description = result.description;
       }

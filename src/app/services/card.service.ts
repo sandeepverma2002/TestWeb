@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CardService {
-  private baseUrl = environment.apiUrl; // e.g., "https://your-backend/api/cards/"
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -23,6 +23,6 @@ export class CardService {
   }
 
   deleteCard(id: string) {
-    return this.http.delete(`${this.baseUrl}${id}/`);     // 👈 Same here
+    return this.http.delete(`${this.baseUrl}${id}/`);
   }
 }

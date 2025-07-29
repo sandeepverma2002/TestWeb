@@ -6,7 +6,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* 🛠️ Fix horizontal scrollbar */
+  overflow-x: hidden; /*  Fix horizontal scrollbar */
   font-family: 'Roboto', sans-serif;
   background-color: #e3f2fd; /* Light material blue */
 }

@@ -25,7 +25,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 export class EditDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    // This is correct: 'data' will contain 'title' and 'description'
     @Inject(MAT_DIALOG_DATA) public data: { title: string; description: string }
   ) {}
 
