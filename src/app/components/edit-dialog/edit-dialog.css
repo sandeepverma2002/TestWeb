@@ -1,0 +1,30 @@
+.dialog-title {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.dialog-content {
+  padding-top: 8px;
+  padding-bottom: 12px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.dialog-actions {
+  padding-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

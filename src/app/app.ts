@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CardListComponent } from './components/card-list/card-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [CardListComponent],
+  template: '<app-card-list></app-card-list>'
 })
-export class App {
-  protected title = 'card-editor-app';
-}
+export class AppComponent {}

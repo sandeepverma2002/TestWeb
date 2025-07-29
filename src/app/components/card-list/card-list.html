@@ -1,0 +1,33 @@
+
+
+<h2 style="text-align: center;">Static Cards</h2>
+<div class="card-container">
+  <mat-card *ngFor="let card of staticCards" class="card">
+    <mat-card-title>{{ card.title }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ card.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="editStaticCard(card)">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<h2 class="section-title">Backend Cards (Django + MongoDB)</h2>
+<div class="card-container">
+  <mat-card *ngFor="let card of backendCards" class="card">
+    <mat-card-title>{{ card.title }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ card.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="editBackendCard(card)">Edit</button>
+      <button mat-button color="warn" (click)="deleteBackendCard(card._id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="add-card-btn">
+  <button mat-raised-button color="accent" (click)="openAddDialog()">Add New Backend Card</button>
+</div>
