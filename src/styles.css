@@ -1,5 +1,12 @@
-body {
+* {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
-  font-family: Roboto, sans-serif;
-  background-color: #a0c8f0; /* Light bluish background */
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* 🛠️ Fix horizontal scrollbar */
+  font-family: 'Roboto', sans-serif;
+  background-color: #e3f2fd; /* Light material blue */
 }

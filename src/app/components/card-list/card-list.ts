@@ -51,26 +51,33 @@ export class CardListComponent {
     });
   }
 
-  editBackendCard(card: any) {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: { title: card.title, description: card.description }
-    });
+ editBackendCard(card: any) {
+  const dialogRef = this.dialog.open(EditDialogComponent, {
+    data: { title: card.title, description: card.description }
+  });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        const updatedCard = { ...card, ...result };
-        this.http.put(this.apiUrl + card._id + '/', updatedCard).subscribe(() => {
-          this.getBackendCards();
-        });
+  dialogRef.afterClosed().subscribe(result => {
+    if (result !== undefined) {
+      const updatedCard = { ...card, ...result };
+
+      if (!card.id) {
+        console.error('Card id is missing:', card);
+        return;
       }
-    });
-  }
+
+      this.http.put(`${this.apiUrl}${card.id}/`, updatedCard).subscribe(() => {
+        this.getBackendCards();
+      });
+    }
+  });
+}
+
 
   deleteBackendCard(id: string) {
-    this.http.delete(this.apiUrl + id + '/').subscribe(() => {
-      this.getBackendCards();
-    });
-  }
+  this.http.delete(`${this.apiUrl}${id}/`).subscribe(() => {
+    this.getBackendCards();
+  });
+}
 
   // MODIFIED: Correctly update the static card properties
   editStaticCard(card: any) {
