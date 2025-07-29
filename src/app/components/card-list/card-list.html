@@ -1,3 +1,9 @@
+<!-- Spinner Overlay -->
+<div *ngIf="isLoading" class="spinner-overlay">
+  <mat-spinner color="primary" diameter="30"></mat-spinner>
+</div>
+
+<!-- Static Cards -->
 <h2 class="section-title-top">Static Cards</h2>
 <div class="card-container">
   <mat-card *ngFor="let card of staticCards" class="card">
@@ -11,6 +17,7 @@
   </mat-card>
 </div>
 
+<!-- Backend Cards -->
 <h2 class="section-title">Backend Cards (Django + MongoDB)</h2>
 <div class="card-container">
   <mat-card *ngFor="let card of backendCards" class="card">
@@ -20,11 +27,14 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button color="primary" (click)="editBackendCard(card)">Edit</button>
-<button mat-button color="warn" (click)="deleteBackendCard(card.id)">Delete</button>
+      <button mat-button color="warn" (click)="deleteBackendCard(card.id)">Delete</button>
     </mat-card-actions>
   </mat-card>
 </div>
 
+<!-- Add New Card Button -->
 <div class="add-card-btn">
-  <button mat-raised-button color="accent" (click)="openAddDialog()">Add New Backend Card</button>
+  <button mat-raised-button color="accent" (click)="openAddDialog()">
+    Add New Backend Card
+  </button>
 </div>

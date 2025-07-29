@@ -8,9 +8,9 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
-  background-color: #e3f2fd; /* Light Material Blue */
+  background-color: #e3f2fd;
 }
 
 /* === Section Titles === */
@@ -140,19 +140,46 @@ mat-card-actions {
 /* === Responsive Layout === */
 @media (min-width: 600px) {
   .card {
-    width: calc(50% - 24px); /* 2 cards per row */
+    width: calc(50% - 24px);
   }
 }
 
 @media (min-width: 900px) {
   .card {
-    width: calc(33.333% - 24px); /* 3 cards per row */
+    width: calc(33.333% - 24px);
   }
 }
 
 @media (min-width: 1200px) {
   .card {
-    width: calc(25% - 24px); /* 4 cards per row */
+    width: calc(25% - 24px);
     max-width: 280px;
   }
+}
+
+/* === Dialog Inputs Fix (Label Overflow + Padding) === */
+mat-form-field {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.mat-mdc-form-field-flex {
+  padding-top: 20px !important;
+  padding-bottom: 6px !important;
+}
+
+.mat-mdc-floating-label {
+  top: 16px !important;
+  background: #fff;
+  padding: 0 4px;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+/* === Centered Loader Spinner === */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }

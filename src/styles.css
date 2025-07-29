@@ -10,3 +10,20 @@ html, body {
   font-family: 'Roboto', sans-serif;
   background-color: #e3f2fd; /* Light material blue */
 }
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7); /* semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.snackbar-error {
+  background-color: #e53935;
+  color: #fff;
+  font-weight: bold;
+}
