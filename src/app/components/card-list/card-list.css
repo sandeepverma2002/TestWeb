@@ -142,6 +142,13 @@ mat-card-actions {
   .card {
     width: calc(50% - 24px);
   }
+
+}
+@media (max-width: 768px) {
+  .section-title,
+  .section-title-top {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 900px) {
